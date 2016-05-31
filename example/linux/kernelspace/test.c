@@ -28,60 +28,45 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __JJWU_DEBUG_CONFIG_H__
-#define __JJWU_DEBUG_CONFIG_H__
+#include <linux/init.h>
+#include <linux/module.h>
+#include <linux/delay.h>
+#include "jjwu_debug.h"
 
-/* The follow definition can change according to your need */
+MODULE_DESCRIPTION("Test jjwu_debug");
+MODULE_AUTHOR("WU, JHENG-JHONG <goodwater@gmail.com>");
+MODULE_LICENSE("BSD");
 
-#define KERNEL_SPACE 0
+#define FMT "%s: %d\n"
 
-#define PRINT_TIMESTAMP 1
-#define PRINT_FILE_NAME 1
-#define PRINT_FILE_LINE 1
-#define PRINT_FUNCTION_NAME 1
-#define PRINT_RESERVE_0 0
-#define PRINT_RESERVE_1 0
-#define PRINT_RESERVE_2 0
-#define PRINT_RESERVE_3 0
+static int __init test_init(void)
+{
+	char *str = "Level";
+	int debug_level = 0;
 
-#define DEBUG_LEVEL 7
+	JJWU_MSG(0, FMT, str, debug_level++);
+	mdelay(1000);
+	JJWU_MSG(1, FMT, str, debug_level++);
+	mdelay(1000);
+	JJWU_MSG(2, FMT, str, debug_level++);
+	mdelay(1000);
+	JJWU_MSG(3, FMT, str, debug_level++);
+	mdelay(1000);
+	JJWU_MSG(4, FMT, str, debug_level++);
+	mdelay(1000);
+	JJWU_MSG(5, FMT, str, debug_level++);
+	mdelay(1000);
+	JJWU_MSG(6, FMT, str, debug_level++);
+	mdelay(1000);
+	JJWU_MSG(7, FMT, str, debug_level);
 
-/* The following definition should not change manually. */
+	return 0;
+}
 
-#define LEVEL_EMERG 0
-#define LEVEL_ALERT 1
-#define LEVEL_CRIT 2
-#define LEVEL_ERR 3
-#define LEVEL_WARNING 4
-#define LEVEL_NOTICE 5
-#define LEVEL_INFO 6
-#define LEVEL_DEBUG 7
+static void __exit test_exit(void)
+{
+	JJWU_MSG(0, "Bye-bye\n");
+}
 
-#define EMERG "EMERG"
-#define ALERT "ALERT"
-#define CRIT "CRIT"
-#define ERR "ERR"
-#define WARNING "WARNING"
-#define NOTICE "NOTICE"
-#define INFO "INFO"
-#define DEBUG "DEBUG"
-
-#define PRINT_TIMESTAMP_SHIFT 0
-#define PRINT_FILE_NAME_SHIFT 1
-#define PRINT_FILE_LINE_SHIFT 2
-#define PRINT_FUNCTION_NAME_SHIFT 3
-#define PRINT_RESERVE_0_SHIFT 4
-#define PRINT_RESERVE_1_SHIFT 5
-#define PRINT_RESERVE_2_SHIFT 6
-#define PRINT_RESERVE_3_SHIFT 7
-
-#define PRINT_TIMESTAMP_MASK 0x1
-#define PRINT_FILE_NAME_MASK 0x2
-#define PRINT_FILE_LINE_MASK 0x4
-#define PRINT_FUNCTION_NAME_MASK 0x8
-#define PRINT_RESERVE_0_MASK 0x10
-#define PRINT_RESERVE_1_MASK 0x20
-#define PRINT_RESERVE_2_MASK 0x40
-#define PRINT_RESERVE_3_MASK 0x80
-
-#endif
+module_init(test_init);
+module_exit(test_exit);

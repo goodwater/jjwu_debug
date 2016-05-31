@@ -12,7 +12,7 @@ SOURCE= \
 
 JJWU_DEBUG = -DJJWU_DEBUG
 
-INCLUDES = -I$(PWD)/../../include
+INCLUDES = -I$(PWD)/../../../include
 CFLAGS = -O2 -Wall -Wno-unused-result $(INCLUDES) $(JJWU_DEBUG)
 
 .PHONY: all

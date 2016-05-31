@@ -8,7 +8,7 @@ NM = $(CROSS_COMPILE)nm
 STRIP = $(CROSS_COMPILE)strip
 
 JJWU_DEBUG += -DJJWU_DEBUG
-INCLUDES += -I$(PWD)/../../include
+INCLUDES += -I$(PWD)/../../../include
 EXTRA_CFLAGS = $(INCLUDES) $(JJWU_DEBUG)
 
 obj-m += test.o

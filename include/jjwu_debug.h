@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2016, WU, JHENG-JHONG <goodwater.wu@gmail.com>
  * All rights reserved.
  *
@@ -31,8 +31,15 @@
 #ifndef __JJWU_DEBUG__
 #define __JJWU_DEBUG__
 
+#ifdef __linux__
 #include <linux/limits.h>
+#endif
+
 #include "jjwu_debug_config.h"
+
+#ifndef NAME_MAX
+#define NAME_MAX 256
+#endif
 
 #define TIME_LENGTH 32
 #define FILE_LINE_LENGTH 16

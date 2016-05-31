@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2016, WU, JHENG-JHONG <goodwater.wu@gmail.com>
  * All rights reserved.
  *
@@ -29,7 +29,7 @@
  */
 
 #include <stdio.h>
-#include <unistd.h>
+#include <windows.h>
 #include "jjwu_debug.h"
 
 #define FMT "%s: %d\n"
@@ -40,20 +40,21 @@ int main(int argc, const char *argv[])
 	int debug_level = 0;
 
 	JJWU_MSG(0, FMT, str, debug_level++);
-	sleep(1);
+	Sleep(1);
 	JJWU_MSG(1, FMT, str, debug_level++);
-	sleep(1);
+	Sleep(1);
 	JJWU_MSG(2, FMT, str, debug_level++);
-	sleep(1);
+	Sleep(1);
 	JJWU_MSG(3, FMT, str, debug_level++);
-	sleep(1);
+	Sleep(1);
 	JJWU_MSG(4, FMT, str, debug_level++);
-	sleep(1);
+	Sleep(1);
 	JJWU_MSG(5, FMT, str, debug_level++);
-	sleep(1);
+	Sleep(1);
 	JJWU_MSG(6, FMT, str, debug_level++);
-	sleep(1);
+	Sleep(1);
 	JJWU_MSG(7, FMT, str, debug_level);
+	system("pause");
 
 	return 0;
 }
