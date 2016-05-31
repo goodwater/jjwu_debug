@@ -1,0 +1,61 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+JJWU_DEBUG USAGE
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1. Copy the whole package to your source code
+2. Include jjwu_debug.h in your source code, that is #include "jjwu_debug.h"
+3. Add jjwu_debug.h path to your include path in Makefile
+4. Add -DJJWU_DEBUG to your CFLAGS in Makefile or Add #define JJWU_DEBUG in jjwu_debug_config.h
+5. Just use JJWU_MSG(LEVEL, FMT, ...) macro in your source code to print your debug messages
+
+LEVEL: LEVEL is a digit from 0 to 7, 0 is the most important messages
+FMT: The format for what you want to print
+...: Variables according to your FMT
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+MESSAGE LEVEL
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+This is similar to Linux kernel printk() level
+
+0: EMERGENCY
+1: ALERT
+2: CRITICAL
+3: ERROR
+4: WARNING
+5: NOTICE
+6: INFOMATION
+7: DEBUG
+
+0 is the most important messages
+7 is the most general messages
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CUSTOMIZATION
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+You can modify jjwu_debug_config.h to customize your debug messages
+
+KERNEL_SPACE = 0, userspace
+KERNEL_SPACE = 1, kernelspace
+
+PRINT_TIMESTAMP = 0, not print timestamp
+PRINT_TIMESTAMP = 1, print timestamp
+
+PRINT_FILE_NAME = 0, not print file name
+PRINT_FILE_NAME = 1, print file name
+
+PRINT_FILE_LINE = 0, not print line number
+PRINT_FILE_LINE = 1, print line number
+
+PRINT_FUNCTION_NAME = 0, not print function name
+PRINT_FUNCTION_NAME = 1, print function name
+
+DEBUG_LEVEL = 0, print message level 0
+DEBUG_LEVEL = 1, print message level from 0 to 1
+DEBUG_LEVEL = 2, print message level from 0 to 2
+DEBUG_LEVEL = 3, print message level from 0 to 3
+DEBUG_LEVEL = 4, print message level from 0 to 4
+DEBUG_LEVEL = 5, print message level from 0 to 5
+DEBUG_LEVEL = 6, print message level from 0 to 6
+DEBUG_LEVEL = 7, print message level from 0 to 7
