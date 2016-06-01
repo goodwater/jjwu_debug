@@ -87,6 +87,19 @@ static inline char *timestamp(char *timestr)
 
 #define PRINT(FMT, ...) printf(FMT, ##__VA_ARGS__)
 
+#ifdef _MSC_VER
+static inline char *timestamp(char *timestr)
+{
+	time_t timer;
+	struct tm tm_info;
+
+	time(&timer);
+	localtime_s(&tm_info, &timer);
+	strftime(timestr, TIME_LENGTH, "%Y-%m-%d %H:%M:%S", &tm_info);
+
+	return timestr;
+}
+#elif __GCC__ || __GNUC__
 static inline char *timestamp(char *timestr)
 {
 	time_t timer;
@@ -98,6 +111,14 @@ static inline char *timestamp(char *timestr)
 
 	return timestr;
 }
+#else // else of #ifdef _WIN32
+static inline char *timestamp(char *timestr)
+{
+	snprintf(timestr, TIME_LENGTH, "%04d-%02d-%02d %02d:%02d:%02d", 0, 0, 0, 0, 0, 0);
+
+	return timestr;
+}
+#endif
 
 #endif //end of #ifdef KERNEL_SPACE
 
