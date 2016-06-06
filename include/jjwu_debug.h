@@ -197,9 +197,26 @@ static inline char *timestamp(char *timestr)
 		break;\
 	}
 
+#define JJWU_EMERG_MSG(FMT, ...) JJWU_MSG(LEVEL_EMERG, FMT, ##__VA_ARGS__)
+#define JJWU_ALERT_MSG(FMT, ...) JJWU_MSG(LEVEL_ALERT, FMT, ##__VA_ARGS__)
+#define JJWU_CRIT_MSG(FMT, ...) JJWU_MSG(LEVEL_CRIT, FMT, ##__VA_ARGS__)
+#define JJWU_ERR_MSG(FMT, ...) JJWU_MSG(LEVEL_ERR, FMT, ##__VA_ARGS__)
+#define JJWU_WARNING_MSG(FMT, ...) JJWU_MSG(LEVEL_WARNING, FMT, ##__VA_ARGS__)
+#define JJWU_NOTICE_MSG(FMT, ...) JJWU_MSG(LEVEL_NOTICE, FMT, ##__VA_ARGS__)
+#define JJWU_INFO_MSG(FMT, ...) JJWU_MSG(LEVEL_INFO, FMT, ##__VA_ARGS__)
+#define JJWU_DEBUG_MSG(FMT, ...) JJWU_MSG(LEVEL_DEBUG, FMT, ##__VA_ARGS__)
+
 #else //else of #ifdef JJWU_DEBUG
 
 #define JJWU_MSG(LEVEL, FMT, ...)
+#define JJWU_EMER_MSG(FMT, ...)
+#define JJWU_ALERT_MSG(FMT, ...)
+#define JJWU_CRIT_MSG(FMT, ...)
+#define JJWU_ERR_MSG(FMT, ...)
+#define JJWU_WARNING_MSG(FMT, ...)
+#define JJWU_NOTICE_MSG(FMT, ...)
+#define JJWU_INFO_MSG(FMT, ...)
+#define JJWU_DEBUG_MSG(FMT, ...)
 
 #endif //end of #ifdef JJWU_DEBUG
 
